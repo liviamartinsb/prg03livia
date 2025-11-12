@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.com.ifba.curso.view;
-
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import br.com.ifba.curso.dao.CursoDAO; 
+import br.com.ifba.curso.entity.Curso; 
 /**
  *
  * @author Lívia Martins Bastos
@@ -140,9 +144,36 @@ public class CursoForm extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CursoForm().setVisible(true));
+        /* Create and display the form */java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+           
+            CursoListar tela = new CursoListar(); 
+            
+            tela.setVisible(true);
+            
+            tela.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE); 
+            
+            tela.setLocationRelativeTo(null); 
+        }
+    });
+       
+        
     }
+    
+ 
+public void listarCursos() {
+    try {
+      
+        CursoDAO dao = new CursoDAO();
+        List<Curso> listaDeCursos = dao.findAll(); 
+        
+        
+    } catch (Exception e) {
+        // ... (tratamento de exceção)
+    }
+}
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
